@@ -1,0 +1,24 @@
+<main>
+    <h1>TODO LIST</h1>
+    <div class="add">
+        <button routerLink="/edit-task"><mat-icon class="icon">add</mat-icon>Ajouter une tâche</button>
+    </div>
+    <div class="line title">
+        <div class="element">Id</div>
+        <div class="element">Texte</div>
+        <div class="element">Fini</div>
+        <div class="element action">Action</div>
+    </div>
+    @for (tasks of listTasks; let indexTask = $index; track indexTask) {
+        <div class="line">
+            <div class="element">{{ tasks.id }}</div>
+            <div class="element">{{ tasks.text }}</div>
+            @if (tasks.finish) {
+                <div class="element">Oui</div>
+            }@else {
+                <div class="element">Non</div>
+            }
+            <div class="element action" (click)="deleteTask(tasks.id)"><mat-icon>delete</mat-icon></div>
+        </div>
+    }
+</main>

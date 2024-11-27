@@ -1,0 +1,18 @@
+<main>
+    <h1>Ajouter une nouvelle tâche</h1>
+    <form [formGroup]="formulare" (ngSubmit)="onAddTask()">
+        <mat-form-field class="input">
+            <mat-label>Texte de la tâche</mat-label>
+            <input formControlName="text" matInput placeholder="Ex: Sortir les poubelles">
+            @if (formulare.get("text")?.hasError("minlength")) {
+                <mat-error>Le texte doit comporter au moins 5 charactère</mat-error>
+            }@else {
+                <mat-error>Le texte de la tâche est obligatoire</mat-error>
+            }
+        </mat-form-field>
+        <div class="add">
+            <button routerLink="/edit-task" class="button">Ajouter la tâche</button>
+            <button routerLink="/home" class="button cancel">Annuler</button>
+        </div>
+    </form>
+</main>
